@@ -1,0 +1,51 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v2/pokemon/{pokemon_name}":
+    parameters:
+    - name: pokemon_name
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      summary: Retrieves a Pokemon by name
+      tags:
+      - Pokemons
+      parameters:
+      - name: pokemon_name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Pokemon found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  abilities:
+                    type: array
+                    items:
+                      type: string
+        '404':
+          description: Pokemon not found
+servers:
+- url: https://pokeapi-jlft.onrender.com
+  description: Ambiente de produção
+  variables:
+    defaultHost:
+      default: https://pokeapi-jlft.onrender.com
+
+- url: http://localhost:3000
+  description: Testando localmente
+  variables:
+    defaultHost:
+      default: http://localhost:3000
