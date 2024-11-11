@@ -1,0 +1,15 @@
+Frontend:
+
+1- Instalar node e npm
+2- rodar npm install
+3- rodar "npm run dev"
+
+Backend:
+
+1- instalar ruby e rails
+2- rodar um bundle 
+3- rodar "rails s"
+
+Banco:
+
+1- ser instanciado no Docker
