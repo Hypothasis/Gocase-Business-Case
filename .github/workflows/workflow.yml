@@ -9,6 +9,10 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
+    env:
+      VERCEL_ORG_ID: ${{secrets.ORG_ID}}
+      VERCEL_PROJECT_ID: ${{secrets.PROJECT_ID}}
+
     steps:
       - name: Olhando o Código
         uses: actions/checkout@v3
@@ -23,7 +27,7 @@ jobs:
         
       - name: Build Vercel
         working-directory: ./Frontend
-        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy
         working-directory: ./Frontend
