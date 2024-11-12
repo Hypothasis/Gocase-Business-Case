@@ -72,6 +72,20 @@ docker rm -f "nome conteiner"
 docker image rm -f "nome imagem"
 ```
 
+## IMPORTANTE!
+
+- Nessa Branch a aplicação Backend Ruby usa o Banco de Dados Mysql, sendo assim caso queira rodar so a aplicação backend, o .env deve conter os dados para o mysql local da sua maquina:
+
+Um exemplo de .env:
+```
+RAILS_MASTER_KEY=<key>
+DATABASE_USERNAME=root
+DATABASE_PASSWORD=root
+DATABASE_HOST=127.0.0.1
+DATABASE_PORT=3306
+```
+- Mas caso não queira ter que instalar mysql na máquina local, basta rodar o docker-compose, pois ele instancia tudo.
+
 # Bônus:
 
 Em cada aplicação temos uma pasta Shell, que são arquivos para automatizar esse processo de criar e deletar os conteiners e imagens. Cada arquivo shell.sh criamos e instanciamos cada imagem e conteiner da aquela aplicação, como assim? se na pasta do Frontend rodarmos esse shell.sh, criamos tanto a imagem e conteiner com apenas um enter. Para excluir em apenas um click basta rodar o delete.sh, que exclui tanto o conteiner e imagem.
@@ -84,4 +98,3 @@ As imagens abaixo ilustram melhor:
 
 - Deletando com um click:
 ![](https://github.com/Hypothasis/Gocase-Business-Case/blob/main/prints/delete_shell.png)
-# Gocase-Business-Case
