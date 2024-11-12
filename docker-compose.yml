@@ -1,4 +1,4 @@
-version: '3'
+version: '3.7'
 
 services:
   frontend:
@@ -12,13 +12,35 @@ services:
   backend:
     container_name: Backend
     build: Backend/.
+    environment:
+      DATABASE_HOST: db  
+      DATABASE_USERNAME: root  
+      DATABASE_PASSWORD: root  
+      DATABASE_PORT: 3306  
+      DATABASE_NAME: pokeapi_development
+
+    networks:
+      - my_network
     ports:
       - "3000:3000"
     depends_on:
       - db
+    command: ["sh", "-c","rails db:migrate && rails s -b 0.0.0.0"]
 
   db:
     container_name: Banco
-    image: nouchka/sqlite3:latest
+    build: Banco/.
     environment:
-      - SQLITE_DB_PATH="Backend/pokeapi_development"
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: pokeapi_development
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user
+    networks:
+      - my_network
+    ports:
+      - "3306:3306"
+      
+networks:
+  my_network:
+    driver: bridge
+   

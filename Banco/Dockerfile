@@ -1,0 +1,10 @@
+FROM mysql:latest
+
+ENV MYSQL_ROOT_PASSWORD=root
+ENV MYSQL_DATABASE=pokeapi_development
+ENV MYSQL_USER=user
+ENV MYSQL_PASSWORD=user
+
+EXPOSE 3306
+
+
